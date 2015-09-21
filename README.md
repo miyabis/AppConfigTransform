@@ -1,5 +1,7 @@
 # AppConfigTransform
 
+[![Build status](https://ci.appveyor.com/api/projects/status/v3xhi90glw6kw351?svg=true)](https://ci.appveyor.com/project/miyabis/appconfigtransform)
+
 App.Config Transform.
 connectionStrings, userSettings, applicationSettings,log4net.config file.
 In advance, App.Debug.config, App.Main.config, App.Hotfix.config, App.Release.config, 
@@ -21,5 +23,3 @@ License
 Microsoft Public License (MS-PL)
 
 http://opensource.org/licenses/MS-PL
-
-
