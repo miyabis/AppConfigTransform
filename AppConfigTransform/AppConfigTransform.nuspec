@@ -19,4 +19,20 @@ log4net.config file</summary>
         <language>en-US</language>
         <tags>App.Config Transform log4net</tags>
     </metadata>
+  <files>
+    <file src="build\MiYABiS.AppConfigTransform.targets" target="build\MiYABiS.AppConfigTransform.targets" />
+    <file src="content\My Project\AppConfigTransformAssemblyInfo.vb" target="content\My Project\AppConfigTransformAssemblyInfo.vb" />
+    <file src="content\Properties\AppConfigTransformAssemblyInfo.cs" target="content\Properties\AppConfigTransformAssemblyInfo.cs" />
+    <file src="content\app.config" target="content\app.config" />
+    <file src="content\app.Hotfix.config.pp" target="content\app.Hotfix.config.pp" />
+    <file src="content\app.Main.config.pp" target="content\app.Main.config.pp" />
+    <file src="content\app.Release.config.pp" target="content\app.Release.config.pp" />
+    <file src="content\log4net.config" target="content\log4net.config" />
+    <file src="content\log4net.Hotfix.config" target="content\log4net.Hotfix.config" />
+    <file src="content\log4net.Main.config" target="content\log4net.Main.config" />
+    <file src="content\log4net.Release.config" target="content\log4net.Release.config" />
+    <file src="tools\install.ps1" target="tools\install.ps1" />
+    <file src="tools\uninstall.ps1" target="tools\uninstall.ps1" />
+    <file src="Readme.txt" target="Readme.txt" />
+  </files>
 </package>

@@ -80,7 +80,6 @@
     <None Include="content\log4net.Release.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="NuGetPack.target" />
   </ItemGroup>
   <ItemGroup>
     <None Include="content\My Project\AppConfigTransformAssemblyInfo.vb">
