@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
+    <metadata>
+        <id>MiYABiS.AppConfigTransform</id>
+        <version>1.0.1</version>
+        <title>App.Config Transform</title>
+        <authors>MiYABiS</authors>
+        <owners>MiYABiS</owners>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>App.Config Transform.
+connectionStrings, userSettings, applicationSettings,
+log4net.config file.
+In advance, Debug, Main, Hotfix, Release is available.
+log4net.config file will be included in the clickonce publish.</description>
+        <summary>App.Config Transform.
+connectionStrings, userSettings, applicationSettings,
+log4net.config file</summary>
+        <copyright>Copyright © 2015 MiYABiS All Rights Reserved.</copyright>
+        <language>en-US</language>
+        <tags>App.Config Transform log4net</tags>
+    </metadata>
+</package>

@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<Project DefaultTargets="BuildNuGetPackage" xmlns="http://schemas.microsoft.com/developer/msbuild/2003" ToolsVersion="4.0">
+  <PropertyGroup>
+    <NuGetServer></NuGetServer>
+    <NuGetApiKey></NuGetApiKey>
+    <SemVer Condition=" '$(ConfigurationName)' == 'Debug' ">-Beta</SemVer>
+  </PropertyGroup>
+
+  <Target Name="GetVersionInfo">
+    <Message Text="Assembly : $(OutputPath)$(AssemblyName).dll" />
+    <MSBuild.ExtensionPack.Framework.Assembly TaskAction="GetInfo" NetAssembly="$(OutputPath)$(AssemblyName).dll">
+      <Output TaskParameter="OutputItems" ItemName="Info"/>
+    </MSBuild.ExtensionPack.Framework.Assembly>
+
+    <CreateProperty
+            Value="%(Info.AssemblyInformationalVersion)">
+      <Output
+          TaskParameter="Value"
+          PropertyName="Version" />
+    </CreateProperty>
+
+    <Message Text="Version : $(Version)" />
+  </Target>
+
+  <Target Name="BuildNuGetPackage" DependsOnTargets="GetVersionInfo">
+
+    <CreateItem Include="$(OutputPath)*.nuspec">
+      <Output
+          TaskParameter="Include"
+          ItemName="NuSpecFiles"/>
+    </CreateItem>
+    <Move SourceFiles="@(NuSpecFiles)" DestinationFiles="@(NuSpecFiles->'$(OutputPath)%(RecursiveDir)$(AssemblyName)%(Extension)')" />
+
+    <MSBuild.ExtensionPack.FileSystem.File TaskAction="Replace"
+												RegexPattern="version&gt;([^&quot;&lt;]*)&lt;/version"
+												Replacement="version&gt;$(Version)$(SemVer)&lt;/version"
+												Files="$(OutputPath)$(AssemblyName).nuspec"/>
+
+    <Exec WorkingDirectory="$(OutputPath)"
+				Command='"$(NuGetExePath)" pack $(AssemblyName).nuspec -Verbosity detailed' />
+
+    <Copy SourceFiles="$(OutputPath)Moca.NETWebFormsProject.$(Version)$(SemVer).nupkg" DestinationFolder="..\..\..\Release" OverwriteReadOnlyFiles="true" />
+    <!--
+    <Exec Condition=" !Exists('$(NuGetExePath)') " WorkingDirectory="$(OutputPath)"
+				Command='"..\..\$(NuGetExePath)" pack $(AssemblyName).nuspec -Verbosity detailed' />
+    <Exec Condition=" '$(NuGetApiKey)' != '' "
+			  WorkingDirectory="$(NuGetDir)Packages"
+			  Command="$(NuGetExe) push Moca.NETSQLCLR.$(Version)$(SemVer).nupkg $(NuGetApiKey) -Verbosity detailed" />-->
+  </Target>
+
+</Project>
