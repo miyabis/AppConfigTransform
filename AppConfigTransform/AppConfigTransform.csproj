@@ -95,8 +95,8 @@
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
   </Target>
-  -->
   <Target Name="AfterBuild">
     <Delete Files="$(OutputPath)$(AssemblyName).dll" />
   </Target>
+  -->
 </Project>
