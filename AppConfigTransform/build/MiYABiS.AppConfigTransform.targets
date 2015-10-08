@@ -1,23 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
 
-	<PropertyGroup>
-		<MicrosoftWebPublishingTasksDll14>$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v14.0\Web\Microsoft.Web.Publishing.Tasks.dll</MicrosoftWebPublishingTasksDll14>
-		<MicrosoftWebPublishingTasksDll12>$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v12.0\Web\Microsoft.Web.Publishing.Tasks.dll</MicrosoftWebPublishingTasksDll12>
-		<MicrosoftWebPublishingTasksDll11>$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v11.0\Web\Microsoft.Web.Publishing.Tasks.dll</MicrosoftWebPublishingTasksDll11>
-		<MicrosoftWebPublishingTasksDll10>$(MSBuildExtensionsPath)\Microsoft\VisualStudio\v10.0\Web\Microsoft.Web.Publishing.Tasks.dll</MicrosoftWebPublishingTasksDll10>
-		<MicrosoftWebPublishingTasksDll Condition="Exists('$(MicrosoftWebPublishingTasksDll14)')" >$(MicrosoftWebPublishingTasksDll14)</MicrosoftWebPublishingTasksDll>
-		<MicrosoftWebPublishingTasksDll Condition="Exists('$(MicrosoftWebPublishingTasksDll12)')" >$(MicrosoftWebPublishingTasksDll12)</MicrosoftWebPublishingTasksDll>
-		<MicrosoftWebPublishingTasksDll Condition="Exists('$(MicrosoftWebPublishingTasksDll11)')" >$(MicrosoftWebPublishingTasksDll11)</MicrosoftWebPublishingTasksDll>
-		<MicrosoftWebPublishingTasksDll Condition="Exists('$(MicrosoftWebPublishingTasksDll10)')" >$(MicrosoftWebPublishingTasksDll10)</MicrosoftWebPublishingTasksDll>
-	</PropertyGroup>
+  <UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Web\Microsoft.Web.Publishing.Tasks.dll" />
 
-	<UsingTask TaskName="TransformXml" AssemblyFile="$(MicrosoftWebPublishingTasksDll)" />
-	
-	<Target Name="TransformAppConfig" AfterTargets="PrepareForBuild" Condition="exists('app.$(Configuration).config')">
-		<TransformXml Source="app.config" Destination="$(IntermediateOutputPath)$(TargetFileName).config" Transform="app.$(Configuration).config" />
+  <Target Name="TransformAppConfig" AfterTargets="PrepareForBuild" Condition="exists('App.$(Configuration).config')">
+		<TransformXml Source="App.config" Destination="$(IntermediateOutputPath)$(TargetFileName).config" Transform="App.$(Configuration).config" />
 		<ItemGroup>
-			<AppConfigWithTargetPath Remove="app.config" />
+			<AppConfigWithTargetPath Remove="App.config" />
 			<AppConfigWithTargetPath Include="$(IntermediateOutputPath)$(TargetFileName).config">
 				<TargetPath>$(TargetFileName).config</TargetPath>
 			</AppConfigWithTargetPath>
@@ -29,12 +18,14 @@
 		<TransformXml Source="log4net.config" Destination="$(IntermediateOutputPath)log4net.config" Transform="log4net.$(Configuration).config" />
 		<Copy SourceFiles="$(IntermediateOutputPath)log4net.config" DestinationFiles="$(TargetDir)log4net.config" OverwriteReadOnlyFiles="true" />
 	</Target>
-	<Target Name="TransformLog4netCp" AfterTargets="PrepareForBuild" Condition="!exists('log4net.$(Configuration).config')">
-		<Copy SourceFiles="log4net.config" DestinationFiles="$(IntermediateOutputPath)log4net.config" OverwriteReadOnlyFiles="true" />
-		<Copy SourceFiles="$(IntermediateOutputPath)log4net.config" DestinationFiles="$(TargetDir)log4net.config" OverwriteReadOnlyFiles="true" />
-	</Target>
+  <Target Name="TransformLog4netCp" AfterTargets="PrepareForBuild" Condition="!exists('log4net.$(Configuration).config')">
+    <Copy Condition="exists('log4net.config')"
+			  SourceFiles="log4net.config" DestinationFiles="$(IntermediateOutputPath)log4net.config" OverwriteReadOnlyFiles="true" />
+    <Copy Condition="exists('$(IntermediateOutputPath)log4net.config')"
+			  SourceFiles="$(IntermediateOutputPath)log4net.config" DestinationFiles="$(TargetDir)log4net.config" OverwriteReadOnlyFiles="true" />
+  </Target>
 
-	<ItemGroup>
+  <ItemGroup>
 		<AdditionalPublishFile Include="$(IntermediateOutputPath)log4net.config">
 			<Visible>False</Visible>
 		</AdditionalPublishFile>

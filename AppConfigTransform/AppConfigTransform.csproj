@@ -65,16 +65,16 @@
     <None Include="build\MiYABiS.AppConfigTransform.targets">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="content\app.config">
+    <None Include="content\App.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="content\app.Hotfix.config.pp">
+    <None Include="content\App.Hotfix.config.pp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="content\app.Main.config.pp">
+    <None Include="content\App.Main.config.pp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="content\app.Release.config.pp">
+    <None Include="content\App.Release.config.pp">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="content\log4net.config">

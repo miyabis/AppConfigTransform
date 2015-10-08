@@ -24,10 +24,10 @@ log4net.config file will be included in the clickonce publish.
     <file src="build\MiYABiS.AppConfigTransform.targets" target="build\MiYABiS.AppConfigTransform.targets" />
     <file src="content\My Project\AppConfigTransformAssemblyInfo.vb" target="content\My Project\AppConfigTransformAssemblyInfo.vb" />
     <file src="content\Properties\AppConfigTransformAssemblyInfo.cs" target="content\Properties\AppConfigTransformAssemblyInfo.cs" />
-    <file src="content\app.config" target="content\app.config" />
-    <file src="content\app.Hotfix.config.pp" target="content\app.Hotfix.config.pp" />
-    <file src="content\app.Main.config.pp" target="content\app.Main.config.pp" />
-    <file src="content\app.Release.config.pp" target="content\app.Release.config.pp" />
+    <file src="content\App.config" target="content\App.config" />
+    <file src="content\App.Hotfix.config.pp" target="content\App.Hotfix.config.pp" />
+    <file src="content\App.Main.config.pp" target="content\App.Main.config.pp" />
+    <file src="content\App.Release.config.pp" target="content\App.Release.config.pp" />
     <file src="content\log4net.config" target="content\log4net.config" />
     <file src="content\log4net.Hotfix.config" target="content\log4net.Hotfix.config" />
     <file src="content\log4net.Main.config" target="content\log4net.Main.config" />
