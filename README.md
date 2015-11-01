@@ -1,6 +1,7 @@
 # AppConfigTransform
 
 [![Build status](https://ci.appveyor.com/api/projects/status/v3xhi90glw6kw351?svg=true)](https://ci.appveyor.com/project/miyabis/appconfigtransform)
+[![NuGet](https://img.shields.io/nuget/v/MiYABiS.AppConfigTransform.svg)](https://www.nuget.org/packages/MiYABiS.AppConfigTransform/)
 
 App.Config Transform.
 connectionStrings, userSettings, applicationSettings,log4net.config file.
