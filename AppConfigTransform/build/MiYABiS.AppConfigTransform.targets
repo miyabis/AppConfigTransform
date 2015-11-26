@@ -38,4 +38,13 @@
 		</CreateItem>
 	</Target>
 
+  <!--
+    C:\Program Files\MSBuild\Microsoft\VisualStudio\v??.0\OfficeTools\Microsoft.VisualStudio.Tools.Office.targets の VisualStudioForApplicationsBuild 前へ割り込み
+  -->
+  <Target Name="VisualStudioForApplicationsBuildBefore" BeforeTargets="VisualStudioForApplicationsBuild">
+    <CreateItem Include="@(AdditionalPublishFile)" AdditionalMetadata="TargetPath=%(FileName)%(Extension);IsDataFile=false;OriginalItemSpec=%(FileName)%(Extension)">
+      <Output TaskParameter="Include" ItemName="ContentWithTargetPath" />
+    </CreateItem>
+  </Target>
+
 </Project>

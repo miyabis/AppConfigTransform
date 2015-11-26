@@ -9,8 +9,7 @@
         <licenseUrl>https://github.com/miyabis/AppConfigTransform#license</licenseUrl>
         <projectUrl>https://github.com/miyabis/AppConfigTransform</projectUrl>
       <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>App.Config Transform.
-connectionStrings, userSettings, applicationSettings,log4net.config file.
+        <description>App.Config and log4net.config Transform.
 In advance, App.Debug.config, App.Main.config, App.Hotfix.config, App.Release.config,
 log4net.Debug.config, log4net.Main.config, log4net.Hotfix.config, log4net.Release.config is available.
 log4net.config file will be included in the clickonce publish.
