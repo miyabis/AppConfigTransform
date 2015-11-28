@@ -3,7 +3,7 @@
 [![Build status](https://ci.appveyor.com/api/projects/status/v3xhi90glw6kw351?svg=true)](https://ci.appveyor.com/project/miyabis/appconfigtransform)
 [![NuGet](https://img.shields.io/nuget/v/MiYABiS.AppConfigTransform.svg)](https://www.nuget.org/packages/MiYABiS.AppConfigTransform/)
 
-App.Config, log4net.config Transform and App.Config Section Protection.  
+App.Config, log4net.config Transform.  
 In advance, App.Debug.config, App.Main.config, App.Hotfix.config, App.Release.config, 
 log4net.Debug.config, log4net.Main.config, log4net.Hotfix.config, log4net.Release.config is available.  
 log4net.config file will be included in the clickonce publish.
