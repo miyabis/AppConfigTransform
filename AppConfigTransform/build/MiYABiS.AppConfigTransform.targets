@@ -4,20 +4,20 @@
   <UsingTask TaskName="TransformXml" AssemblyFile="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\Web\Microsoft.Web.Publishing.Tasks.dll" />
 
   <Target Name="TransformAppConfig" AfterTargets="PrepareForBuild" Condition="exists('App.$(Configuration).config')">
-		<TransformXml Source="App.config" Destination="$(IntermediateOutputPath)$(TargetFileName).config" Transform="App.$(Configuration).config" />
-		<ItemGroup>
-			<AppConfigWithTargetPath Remove="App.config" />
-			<AppConfigWithTargetPath Include="$(IntermediateOutputPath)$(TargetFileName).config">
-				<TargetPath>$(TargetFileName).config</TargetPath>
-			</AppConfigWithTargetPath>
-		</ItemGroup>
-	</Target>
+    <TransformXml Source="App.config" Destination="$(IntermediateOutputPath)$(TargetFileName).config" Transform="App.$(Configuration).config" />
+    <ItemGroup>
+      <AppConfigWithTargetPath Remove="App.config" />
+      <AppConfigWithTargetPath Include="$(IntermediateOutputPath)$(TargetFileName).config">
+        <TargetPath>$(TargetFileName).config</TargetPath>
+      </AppConfigWithTargetPath>
+    </ItemGroup>
+  </Target>
 
-	<Target Name="TransformLog4net" AfterTargets="PrepareForBuild" Condition="exists('log4net.$(Configuration).config')">
-		<Copy SourceFiles="log4net.config" DestinationFiles="$(IntermediateOutputPath)log4net.config" OverwriteReadOnlyFiles="true" />
-		<TransformXml Source="log4net.config" Destination="$(IntermediateOutputPath)log4net.config" Transform="log4net.$(Configuration).config" />
-		<Copy SourceFiles="$(IntermediateOutputPath)log4net.config" DestinationFiles="$(TargetDir)log4net.config" OverwriteReadOnlyFiles="true" />
-	</Target>
+  <Target Name="TransformLog4net" AfterTargets="PrepareForBuild" Condition="exists('log4net.$(Configuration).config')">
+    <Copy SourceFiles="log4net.config" DestinationFiles="$(IntermediateOutputPath)log4net.config" OverwriteReadOnlyFiles="true" />
+    <TransformXml Source="log4net.config" Destination="$(IntermediateOutputPath)log4net.config" Transform="log4net.$(Configuration).config" />
+    <Copy SourceFiles="$(IntermediateOutputPath)log4net.config" DestinationFiles="$(TargetDir)log4net.config" OverwriteReadOnlyFiles="true" />
+  </Target>
   <Target Name="TransformLog4netCp" AfterTargets="PrepareForBuild" Condition="!exists('log4net.$(Configuration).config')">
     <Copy Condition="exists('log4net.config')"
 			  SourceFiles="log4net.config" DestinationFiles="$(IntermediateOutputPath)log4net.config" OverwriteReadOnlyFiles="true" />
@@ -26,17 +26,17 @@
   </Target>
 
   <ItemGroup>
-		<AdditionalPublishFile Include="$(IntermediateOutputPath)log4net.config">
-			<Visible>False</Visible>
-		</AdditionalPublishFile>
-	</ItemGroup>
-	
-	<Target Name="BeforePublish">
-		<Touch Files="@(IntermediateAssembly)" />
-		<CreateItem Include="@(AdditionalPublishFile)" AdditionalMetadata="TargetPath=%(FileName)%(Extension);IsDataFile=false">
-			<Output TaskParameter="Include" ItemName="_DeploymentManifestFiles" />
-		</CreateItem>
-	</Target>
+    <AdditionalPublishFile Include="$(IntermediateOutputPath)log4net.config">
+      <Visible>False</Visible>
+    </AdditionalPublishFile>
+  </ItemGroup>
+
+  <Target Name="Log4netConfigPublish" BeforeTargets="BeforePublish">
+    <Touch Files="@(IntermediateAssembly)" />
+    <CreateItem Include="@(AdditionalPublishFile)" AdditionalMetadata="TargetPath=%(FileName)%(Extension);IsDataFile=false">
+      <Output TaskParameter="Include" ItemName="_DeploymentManifestFiles" />
+    </CreateItem>
+  </Target>
 
   <!--
     C:\Program Files\MSBuild\Microsoft\VisualStudio\v??.0\OfficeTools\Microsoft.VisualStudio.Tools.Office.targets の VisualStudioForApplicationsBuild 前へ割り込み
