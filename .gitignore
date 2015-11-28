@@ -6,3 +6,6 @@
 /AppConfigTransform/bin
 /AppConfigTransform/obj
 /.vs
+/packages
+*.nupkg
+*.suo
