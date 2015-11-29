@@ -37,7 +37,7 @@ VB:My Project\AppConfigTransformAssemblyInfo.vb file Please cancel comment.
 App.config Section Protection setting
 ==========
 
-When you use , please install the Moca.NETConfiguration from nuget.  
+When you use , please install the [Moca.NETConfiguration](https://github.com/mocanet/MocaConfiguration) from nuget.  
 
 C#:add Assembly property.
 ```
