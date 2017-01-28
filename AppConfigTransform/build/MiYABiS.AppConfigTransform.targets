@@ -27,7 +27,7 @@
 
   <ItemGroup>
     <AdditionalPublishFile Include="$(IntermediateOutputPath)log4net.config">
-      <Visible>False</Visible>
+      <OriginalItemSpec>log4net.config</OriginalItemSpec>
     </AdditionalPublishFile>
   </ItemGroup>
 
